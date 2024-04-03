@@ -17,7 +17,7 @@ function Recomended() {
     containerRef.current.scrollLeft = newScrollPosition;
   };
   const updatenews = async () => {
-    let url = `https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=1&type=upcoming`;
+    let url = `https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&type=reco`;
     setloading(true);;
     let data = await fetch(url);
     let parsedata = await data.json();
@@ -27,7 +27,7 @@ function Recomended() {
   }
   const fetchMoreData = async () => {
     setpage(page + 1);
-    let url = `https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=${page + 1}&type=upcoming`;
+    let url = `https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&type=reco`;
     setloading(true);
     let data = await fetch(url);
     let parsedata = await data.json();
@@ -44,7 +44,7 @@ function Recomended() {
       <h3 style={{ marginLeft: '60px' }}>Recomended Shows -</h3>
       <div className="container" >
         <div
-          ref={containerRef}
+          ref={containerRef} 
           style={{
             width: "100%",
             overflowX: "scroll",
@@ -54,7 +54,7 @@ function Recomended() {
         >
           <div className="content-box" style={{ marginTop: '50px' }}>
             {recomended && recomended.map((e) => {
-              return <div className='col-md-2' key={e.imgUrl}>
+              return <div className='col-md-2' key={e.eventName}>
                 <Upcomingitem eventName={e.eventName} cityName={e.cityName} date={e.date} weather={e.weather} imgUrl={e.imgUrl} distanceKm={e.distanceKm} />
               </div>
             })}
@@ -65,6 +65,13 @@ function Recomended() {
   )
 }
 export default Recomended
+
+
+
+
+
+
+
 
 
 
